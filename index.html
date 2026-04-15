@@ -143,35 +143,67 @@
     <button onclick="updateProgress()">Update Progress</button>
 </section>
 
-<!-- 📅 SCHEDULE -->
+<!-- 📅 Study Planner -->
 <section>
-  <h2>📅 Study Schedule</h2>
-
-  <input id="task" placeholder="Task">
-  <input id="time" type="time">
-  <button onclick="addTask()">Add</button>
-
-  <ul id="taskList"></ul>
+    <h2>📅 Study Planner</h2>
+    <input type="text" id="task" placeholder="Enter study task">
+    <input type="time" id="time">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
 </section>
 
-<!-- ⏰ ALARM -->
+<!-- 📝 Quick Notes -->
 <section>
-  <h2>⏰ Reminder</h2>
-
-  <input type="time" id="alarmTime">
-  <button onclick="setAlarm()">Set Alarm</button>
-
-  <p id="alarmStatus"></p>
+    <h2>📝 Quick Notes</h2>
+    <textarea id="note" placeholder="Write notes..."></textarea>
+    <button onclick="saveNote()">Save Note</button>
+    <p id="showNote"></p>
 </section>
 
-<!-- 🎯 HABITS -->
+<!-- 📊 CGPA Calculator -->
 <section>
-  <h2>🎯 Habit Tracker</h2>
+    <h2>📊 CGPA Calculator</h2>
+    <input type="number" id="g1" placeholder="Subject 1">
+    <input type="number" id="g2" placeholder="Subject 2">
+    <input type="number" id="g3" placeholder="Subject 3">
+    <button onclick="calculateCGPA()">Calculate CGPA</button>
+    <p id="cgpaResult"></p>
+</section>
 
-  <input id="habit" placeholder="New habit">
-  <button onclick="addHabit()">Add</button>
+<!-- 🎯 Habit Tracker -->
+<section>
+    <h2>🎯 Habit Tracker</h2>
+    <input type="text" id="habit" placeholder="New habit">
+    <button onclick="addHabit()">Add Habit</button>
+    <ul id="habitList"></ul>
+</section>
 
-  <ul id="habitList"></ul>
+<!-- ⏰ Reminder -->
+<section>
+    <h2>⏰ Reminder</h2>
+    <input type="time" id="alarmTime">
+    <button onclick="setAlarm()">Set Reminder</button>
+    <p id="alarmStatus"></p>
+</section>
+
+<!-- 🔤 Word Counter -->
+<section>
+    <h2>🔤 Word Counter</h2>
+    <textarea id="textInput" placeholder="Type your text here..."></textarea>
+    <p id="wordCount">
+        Words: 0 | Characters: 0 | Reading Time: 0 min
+    </p>
+</section>
+
+<!-- 📚 Study Resources -->
+<section>
+    <h2>📚 Study Resources</h2>
+    <ul>
+        <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
+        <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+    </ul>
 </section>
     
 <!-- 🌐 Language Selector -->
