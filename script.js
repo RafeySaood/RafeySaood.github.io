@@ -238,10 +238,13 @@ function changeLanguage(lang) {
     document.querySelector("h1").textContent = translations[lang].title;
 }
 
+/* ======================
+   📅 STUDY SCHEDULE
+====================== */
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function renderTasks() {
-  const list = document.getElementById("list");
+  let list = document.getElementById("taskList");
   list.innerHTML = "";
 
   tasks.forEach((t, i) => {
@@ -257,8 +260,8 @@ function renderTasks() {
 }
 
 function addTask() {
-  const task = document.getElementById("task").value;
-  const time = document.getElementById("time").value;
+  let task = document.getElementById("task").value;
+  let time = document.getElementById("time").value;
 
   tasks.push({ task, time });
   renderTasks();
@@ -271,6 +274,10 @@ function deleteTask(i) {
 
 renderTasks();
 
+
+/* ======================
+   📝 NOTES
+====================== */
 function saveNote() {
   let note = document.getElementById("note").value;
   localStorage.setItem("note", note);
@@ -278,29 +285,37 @@ function saveNote() {
 }
 
 function showNote() {
-  document.getElementById("savedNote").innerText =
+  document.getElementById("showNote").innerText =
     localStorage.getItem("note") || "No notes yet";
 }
 
 showNote();
 
-let alarm = null;
+
+/* ======================
+   ⏰ ALARM
+====================== */
+let alarmTime = null;
 
 function setAlarm() {
-  alarm = document.getElementById("alarmTime").value;
-  document.getElementById("status").innerText = "Alarm set for " + alarm;
+  alarmTime = document.getElementById("alarmTime").value;
+  document.getElementById("alarmStatus").innerText =
+    "Alarm set for " + alarmTime;
 }
 
 setInterval(() => {
-  let now = new Date();
-  let current = now.toTimeString().slice(0,5);
+  let now = new Date().toTimeString().slice(0,5);
 
-  if (alarm === current) {
-    alert("⏰ Time's up! Take a break!");
-    alarm = null;
+  if (alarmTime === now) {
+    alert("⏰ Time's up!");
+    alarmTime = null;
   }
 }, 1000);
 
+
+/* ======================
+   📊 CGPA
+====================== */
 function calcCGPA() {
   let g1 = Number(document.getElementById("g1").value);
   let g2 = Number(document.getElementById("g2").value);
@@ -308,21 +323,25 @@ function calcCGPA() {
 
   let cgpa = (g1 + g2 + g3) / 3;
 
-  document.getElementById("result").innerText =
-    "Predicted CGPA: " + cgpa.toFixed(2);
+  document.getElementById("cgpaResult").innerText =
+    "CGPA: " + cgpa.toFixed(2);
 }
 
+
+/* ======================
+   🎯 HABITS
+====================== */
 let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
 function renderHabits() {
-  const list = document.getElementById("habitList");
+  let list = document.getElementById("habitList");
   list.innerHTML = "";
 
   habits.forEach((h, i) => {
     list.innerHTML += `
       <li>
         <input type="checkbox"> ${h}
-        <button onclick="removeHabit(${i})">❌</button>
+        <button onclick="deleteHabit(${i})">❌</button>
       </li>
     `;
   });
@@ -336,13 +355,12 @@ function addHabit() {
   renderHabits();
 }
 
-function removeHabit(i) {
+function deleteHabit(i) {
   habits.splice(i, 1);
   renderHabits();
 }
 
 renderHabits();
-
 
 /* 📢 Share Website */
 function shareWebsite() {
