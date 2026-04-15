@@ -222,8 +222,8 @@ function loadProgress() {
     progress = parseInt(savedProgress);
     document.getElementById("progressBar").value = progress;
     document.getElementById("progressText").textContent = progress + "%";
-}
-// 🧹 RESET ONLY PROGRESS TRACKER DATA
+    
+    RESET ONLY PROGRESS TRACKER DATA
 function resetProgressTracker() {
     const confirmReset = confirm("Reset progress tracker? This cannot be undone.");
 
