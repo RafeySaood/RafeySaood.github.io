@@ -143,6 +143,43 @@
     <button onclick="updateProgress()">Update Progress</button>
 </section>
 
+<h2>📅 Study Schedule</h2>
+
+<input id="task" placeholder="Enter task (e.g. Math)" />
+<input id="time" type="time" />
+<button onclick="addTask()">Add</button>
+
+<ul id="list"></ul>
+
+<h2>📝 Notes</h2>
+<textarea id="note" placeholder="Write quick notes..."></textarea>
+<button onclick="saveNote()">Save</button>
+
+<p id="savedNote"></p>  
+
+ <h2>⏰ Reminder</h2>
+<input type="time" id="alarmTime">
+<button onclick="setAlarm()">Set</button>
+
+<p id="status"></p>
+
+<h2>📊 CGPA Predictor</h2>
+
+<input id="g1" placeholder="Subject 1 Grade">
+<input id="g2" placeholder="Subject 2 Grade">
+<input id="g3" placeholder="Subject 3 Grade">
+
+<button onclick="calcCGPA()">Calculate</button>
+
+<p id="result"></p>
+
+<h2>🎯 Habit Tracker</h2>
+
+<input id="habit" placeholder="New habit">
+<button onclick="addHabit()">Add</button>
+
+<ul id="habitList"></ul>    
+
 <!-- 🌐 Language Selector -->
 <section class="card">
     <h2>🌐 Select Language</h2>
