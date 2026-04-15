@@ -106,3 +106,35 @@ footer {
 .light-mode footer {
     background: #ddd;
 }
+
+/* Progress Bar */
+progress {
+    width: 80%;
+    height: 20px;
+    margin: 10px 0;
+}
+
+/* Search Bar */
+#searchBar {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Language Selector */
+select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Buttons Enhancement */
+button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 201, 167, 0.6);
+}
