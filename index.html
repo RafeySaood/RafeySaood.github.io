@@ -1,72 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <title>Rafey's First Webpage</title>
+    <title>Student Tools Hub | Rafey Saood</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-        }
-        header {
-            padding: 60px 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        .btn {
-            background-color: #00c9a7;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .btn:hover {
-            background-color: #00a389;
-        }
-        section {
-            padding: 40px 20px;
-        }
-        footer {
-            background: rgba(0,0,0,0.3);
-            padding: 15px;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>Welcome to Rafey's Website</h1>
-    <p>Built with GitHub Pages 🚀</p>
-    <a href="#" class="btn">Explore</a>
+    <h1>🎓 Student Tools Hub</h1>
+    <p>Smart tools designed to help students succeed.</p>
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>I am learning web development and game design.Its really fun to learn how to make website and game.</p>
+<section class="tools">
+    <div class="card">
+        <h2>📊 Percentage Calculator</h2>
+        <p>Calculate your exam scores instantly.</p>
+        <a href="#percentage">Use Tool</a>
+    </div>
+
+    <div class="card">
+        <h2>📝 To-Do List</h2>
+        <p>Organize your daily tasks and assignments.</p>
+        <a href="#todo">Use Tool</a>
+    </div>
+
+    <div class="card">
+        <h2>⏱️ Pomodoro Timer</h2>
+        <p>Boost productivity with focused study sessions.</p>
+        <a href="#pomodoro">Use Tool</a>
+    </div>
+
+    <div class="card">
+        <h2>🔤 Word Counter</h2>
+        <p>Count words and characters instantly.</p>
+        <a href="#wordcounter">Use Tool</a>
+    </div>
 </section>
 
-<section>
-    <h2>My Projects</h2>
-    <p>More projects coming soon!</p>
+<!-- Percentage Calculator -->
+<section id="percentage">
+    <h2>📊 Percentage Calculator</h2>
+    <input type="number" id="marksObtained" placeholder="Marks Obtained">
+    <input type="number" id="totalMarks" placeholder="Total Marks">
+    <button onclick="calculatePercentage()">Calculate</button>
+    <p id="percentageResult"></p>
+</section>
+
+<!-- To-Do List -->
+<section id="todo">
+    <h2>📝 To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+</section>
+
+<!-- Pomodoro Timer -->
+<section id="pomodoro">
+    <h2>⏱️ Pomodoro Timer</h2>
+    <p id="timer">25:00</p>
+    <button onclick="startTimer()">Start</button>
+</section>
+
+<!-- Word Counter -->
+<section id="wordcounter">
+    <h2>🔤 Word Counter</h2>
+    <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+    <p id="wordCount">Words: 0 | Characters: 0</p>
 </section>
 
 <footer>
-    <p>© 2026 Rafey Saood</p>
-</body>
-    <script src="script.js"></script>
-</html>    
+    <p>© 2026 Rafey Saood | Student Tools Hub</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
-</html>
+</html>           
