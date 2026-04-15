@@ -223,6 +223,28 @@ function loadProgress() {
     document.getElementById("progressBar").value = progress;
     document.getElementById("progressText").textContent = progress + "%";
 }
+// 🧹 RESET ONLY PROGRESS TRACKER DATA
+function resetProgressTracker() {
+    const confirmReset = confirm("Reset progress tracker? This cannot be undone.");
+
+    if (!confirmReset) return;
+
+    // Remove saved data (change key if you used a different name)
+    localStorage.removeItem("progress");
+
+    // Clear UI (change IDs based on your tracker)
+    const progressList = document.getElementById("progressList");
+    if (progressList) {
+        progressList.innerHTML = "";
+    }
+
+    const progressText = document.getElementById("progressText");
+    if (progressText) {
+        progressText.textContent = "No progress yet";
+    }
+
+    alert("✅ Progress tracker has been reset!");
+}
 
 /* 🌐 Multi-Language Support */
 const translations = {
