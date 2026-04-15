@@ -143,46 +143,58 @@
     <button onclick="updateProgress()">Update Progress</button>
 </section>
 
-<h2>📅 Study Schedule</h2>
+<!-- 📅 SCHEDULE -->
+<section>
+  <h2>📅 Study Schedule</h2>
 
-<input id="task" placeholder="Enter task (e.g. Math)" />
-<input id="time" type="time" />
-<button onclick="addTask()">Add</button>
+  <input id="task" placeholder="Task">
+  <input id="time" type="time">
+  <button onclick="addTask()">Add</button>
 
-<ul id="list"></ul>
-</section>    
-
-<h2>📝 Notes</h2>
-<textarea id="note" placeholder="Write quick notes..."></textarea>
-<button onclick="saveNote()">Save</button>
-
-<p id="savedNote"></p>
-</section>    
-
- <h2>⏰ Reminder</h2>
-<input type="time" id="alarmTime">
-<button onclick="setAlarm()">Set</button>
-
-<p id="status"></p>
+  <ul id="taskList"></ul>
 </section>
-    
-<h2>📊 CGPA Predictor</h2>
 
-<input id="g1" placeholder="Subject 1 Grade">
-<input id="g2" placeholder="Subject 2 Grade">
-<input id="g3" placeholder="Subject 3 Grade">
+<!-- 📝 NOTES -->
+<section>
+  <h2>📝 Quick Notes</h2>
 
-<button onclick="calcCGPA()">Calculate</button>
+  <textarea id="note" placeholder="Write note..."></textarea>
+  <button onclick="saveNote()">Save Note</button>
 
-<p id="result"></p>
+  <p id="showNote"></p>
 </section>
-    
-<h2>🎯 Habit Tracker</h2>
 
-<input id="habit" placeholder="New habit">
-<button onclick="addHabit()">Add</button>
+<!-- ⏰ ALARM -->
+<section>
+  <h2>⏰ Reminder</h2>
 
-<ul id="habitList"></ul>    
+  <input type="time" id="alarmTime">
+  <button onclick="setAlarm()">Set Alarm</button>
+
+  <p id="alarmStatus"></p>
+</section>
+
+<!-- 📊 CGPA -->
+<section>
+  <h2>📊 CGPA Predictor</h2>
+
+  <input id="g1" placeholder="Subject 1 Grade">
+  <input id="g2" placeholder="Subject 2 Grade">
+  <input id="g3" placeholder="Subject 3 Grade">
+
+  <button onclick="calcCGPA()">Calculate</button>
+
+  <p id="cgpaResult"></p>
+</section>
+
+<!-- 🎯 HABITS -->
+<section>
+  <h2>🎯 Habit Tracker</h2>
+
+  <input id="habit" placeholder="New habit">
+  <button onclick="addHabit()">Add</button>
+
+  <ul id="habitList"></ul>
 </section>
     
 <!-- 🌐 Language Selector -->
