@@ -3,17 +3,6 @@ function toggleTheme() {
     document.body.classList.toggle("light-mode");
 }
 
-/* 🔎 Search Tools */
-function searchTools() {
-    let input = document.getElementById("searchBar").value.toLowerCase();
-    let sections = document.querySelectorAll(".card");
-
-    sections.forEach(section => {
-        let text = section.innerText.toLowerCase();
-        section.style.display = text.includes(input) ? "block" : "none";
-    });
-}
-
 /* 📝 To-Do List with Local Storage */
 function addTask() {
     const input = document.getElementById("taskInput");
@@ -179,6 +168,17 @@ window.onload = function () {
     loadNotes();
     updateDisplay();
 };
+
+/* 🔎 Search Tools */
+function searchTools() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let sections = document.querySelectorAll(".card");
+
+    sections.forEach(section => {
+        let text = section.innerText.toLowerCase();
+        section.style.display = text.includes(input) ? "block" : "none";
+    });
+}
 
 /* 💬 Motivational Quotes */
 const quotes = [
