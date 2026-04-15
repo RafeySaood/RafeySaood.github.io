@@ -238,89 +238,110 @@ function changeLanguage(lang) {
     document.querySelector("h1").textContent = translations[lang].title;
 }
 
-/* 📅 STUDY SCHEDULE */
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-function renderTasks() {
-  let list = document.getElementById("taskList");
-  list.innerHTML = "";
-
-  tasks.forEach((t, i) => {
-    list.innerHTML += `
-      <li>
-        ${t.time} - ${t.task}
-        <button onclick="deleteTask(${i})">❌</button>
-      </li>
-    `;
-  });
-
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
+/* 📅 Study Schedule (Local Storage) */
 function addTask() {
-  let task = document.getElementById("task").value;
-  let time = document.getElementById("time").value;
+    const taskInput = document.getElementById("task");
+    const timeInput = document.getElementById("time");
 
-  tasks.push({ task, time });
-  renderTasks();
+    const task = taskInput.value.trim();
+    const time = timeInput.value;
+
+    if (!task || !time) return;
+
+    const li = document.createElement("li");
+    li.textContent = `${time} - ${task}`;
+
+    li.onclick = () => {
+        li.remove();
+        saveTasks();
+    };
+
+    document.getElementById("taskList").appendChild(li);
+
+    taskInput.value = "";
+    timeInput.value = "";
+
+    saveTasks();
 }
 
-function deleteTask(i) {
-  tasks.splice(i, 1);
-  renderTasks();
+function saveTasks() {
+    localStorage.setItem(
+        "tasks",
+        document.getElementById("taskList").innerHTML
+    );
 }
 
-renderTasks();
+function loadTasks() {
+    const saved = localStorage.getItem("tasks");
+    if (saved) {
+        document.getElementById("taskList").innerHTML = saved;
+    }
+}
 
-/* ⏰ ALARM */
+
+/* ⏰ Reminder / Alarm */
 let alarmTime = null;
 
 function setAlarm() {
-  alarmTime = document.getElementById("alarmTime").value;
-  document.getElementById("alarmStatus").innerText =
-    "Alarm set for " + alarmTime;
+    alarmTime = document.getElementById("alarmTime").value;
+
+    document.getElementById("alarmStatus").textContent =
+        "Alarm set for " + alarmTime;
 }
 
 setInterval(() => {
-  let now = new Date().toTimeString().slice(0,5);
+    const now = new Date().toTimeString().slice(0, 5);
 
-  if (alarmTime === now) {
-    alert("⏰ Time's up!");
-    alarmTime = null;
-  }
+    if (alarmTime === now) {
+        alert("⏰ Time to study!");
+        alarmTime = null;
+    }
 }, 1000);
 
-/* 🎯 HABITS */
-let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
-function renderHabits() {
-  let list = document.getElementById("habitList");
-  list.innerHTML = "";
-
-  habits.forEach((h, i) => {
-    list.innerHTML += `
-      <li>
-        <input type="checkbox"> ${h}
-        <button onclick="deleteHabit(${i})">❌</button>
-      </li>
-    `;
-  });
-
-  localStorage.setItem("habits", JSON.stringify(habits));
-}
-
+/* 🎯 Habit Tracker */
 function addHabit() {
-  let h = document.getElementById("habit").value;
-  habits.push(h);
-  renderHabits();
+    const habitInput = document.getElementById("habit");
+    const habit = habitInput.value.trim();
+
+    if (!habit) return;
+
+    const li = document.createElement("li");
+    li.textContent = habit;
+
+    li.onclick = () => {
+        li.remove();
+        saveHabits();
+    };
+
+    document.getElementById("habitList").appendChild(li);
+
+    habitInput.value = "";
+
+    saveHabits();
 }
 
-function deleteHabit(i) {
-  habits.splice(i, 1);
-  renderHabits();
+function saveHabits() {
+    localStorage.setItem(
+        "habits",
+        document.getElementById("habitList").innerHTML
+    );
 }
 
-renderHabits();
+function loadHabits() {
+    const saved = localStorage.getItem("habits");
+    if (saved) {
+        document.getElementById("habitList").innerHTML = saved;
+    }
+}
+
+
+/* 📦 Load Everything */
+window.onload = function () {
+    loadTasks();
+    loadNote();
+    loadHabits();
+};
 
 /* 📢 Share Website */
 function shareWebsite() {
