@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+}
+
+/* Header */
+header {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Layout */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+/* Inputs */
+input, textarea, button {
+    width: 90%;
+    margin: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Textarea */
+textarea {
+    height: 100px;
+}
+
+/* Buttons */
+button {
+    background: #00c9a7;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #00a389;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Flashcards */
+#flashcards .flashcard {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+/* Resources */
+.resources a {
+    color: #00c9a7;
+    text-decoration: none;
+}
+
+.resources a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Light Mode */
+.light-mode {
+    background: #f4f4f4;
+    color: black;
+}
+
+.light-mode .card {
+    background: white;
+}
+
+.light-mode header,
+.light-mode footer {
+    background: #ddd;
+}
