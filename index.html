@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Tools Hub | Rafey Saood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🎓 Student Tools Hub</h1>
+    <p>Your all-in-one platform for academic success</p>
+    <button onclick="toggleTheme()">🌙 Toggle Dark/Light Mode</button>
+</header>
+
+<main>
+
+<!-- 📝 To-Do List -->
+<section class="card">
+    <h2>📝 To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+</section>
+
+<!-- 🧮 GPA Calculator -->
+<section class="card">
+    <h2>🧮 GPA Calculator</h2>
+    <input type="number" id="grade1" placeholder="Grade 1">
+    <input type="number" id="grade2" placeholder="Grade 2">
+    <input type="number" id="grade3" placeholder="Grade 3">
+    <button onclick="calculateGPA()">Calculate GPA</button>
+    <p id="gpaResult"></p>
+</section>
+
+<!-- 📊 Percentage Calculator -->
+<section class="card">
+    <h2>📊 Percentage Calculator</h2>
+    <input type="number" id="marksObtained" placeholder="Marks Obtained">
+    <input type="number" id="totalMarks" placeholder="Total Marks">
+    <button onclick="calculatePercentage()">Calculate</button>
+    <p id="percentageResult"></p>
+</section>
+
+<!-- 🔢 Unit Converter -->
+<section class="card">
+    <h2>🔢 Unit Converter (Meters)</h2>
+    <input type="number" id="meters" placeholder="Enter meters">
+    <button onclick="convertUnits()">Convert</button>
+    <p id="conversionResult"></p>
+</section>
+
+<!-- ⏱️ Pomodoro Timer -->
+<section class="card">
+    <h2>⏱️ Pomodoro Timer</h2>
+    <p id="timer">25:00</p>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+</section>
+
+<!-- 🔤 Word Counter -->
+<section class="card">
+    <h2>🔤 Word Counter</h2>
+    <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+    <p id="wordCount">Words: 0 | Characters: 0 | Reading Time: 0 min</p>
+</section>
+
+<!-- 📓 Digital Notes -->
+<section class="card">
+    <h2>📓 Digital Notes</h2>
+    <textarea id="notes" placeholder="Write your notes here..."></textarea>
+    <button onclick="saveNotes()">Save Notes</button>
+    <p id="notesStatus"></p>
+</section>
+
+<!-- 🧠 Flashcards -->
+<section class="card">
+    <h2>🧠 Flashcards</h2>
+    <input type="text" id="question" placeholder="Enter Question">
+    <input type="text" id="answer" placeholder="Enter Answer">
+    <button onclick="addFlashcard()">Add Flashcard</button>
+    <div id="flashcards"></div>
+</section>
+
+<!-- 📅 Study Planner -->
+<section class="card">
+    <h2>📅 Study Planner</h2>
+    <input type="text" id="studyTask" placeholder="Enter study task">
+    <button onclick="addStudyTask()">Add Task</button>
+    <ul id="studyList"></ul>
+</section>
+
+<!-- ⏳ Exam Countdown -->
+<section class="card">
+    <h2>⏳ Exam Countdown</h2>
+    <input type="date" id="examDate">
+    <button onclick="calculateCountdown()">Calculate</button>
+    <p id="countdownResult"></p>
+</section>
+
+<!-- 📚 Study Resources -->
+<section class="card">
+    <h2>📚 Study Resources</h2>
+    <ul class="resources">
+        <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
+        <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    <p>© 2026 Rafey Saood | Student Tools Hub</p>
+</footer>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
