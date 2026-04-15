@@ -168,3 +168,91 @@ window.onload = function () {
     loadNotes();
     updateDisplay();
 };
+
+/* 🔎 Search Tools */
+function searchTools() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let sections = document.querySelectorAll(".card");
+
+    sections.forEach(section => {
+        let text = section.innerText.toLowerCase();
+        section.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+
+/* 💬 Motivational Quotes */
+const quotes = [
+    "Success is the sum of small efforts repeated daily.",
+    "Dream big, work hard, stay focused.",
+    "Believe you can and you're halfway there.",
+    "Push yourself because no one else will do it for you.",
+    "Great things never come from comfort zones.",
+    "Discipline is the bridge between goals and accomplishment."
+];
+
+function generateQuote() {
+    let randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById("quote").textContent = quotes[randomIndex];
+}
+
+/* 📄 Export Notes as PDF */
+function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const notes = document.getElementById("notes").value;
+
+    doc.text(notes || "No notes available.", 10, 10);
+    doc.save("Student_Notes.pdf");
+}
+
+/* 📊 Progress Tracker */
+let progress = 0;
+
+function updateProgress() {
+    if (progress < 100) {
+        progress += 10;
+        document.getElementById("progressBar").value = progress;
+        document.getElementById("progressText").textContent = progress + "%";
+        localStorage.setItem("progress", progress);
+    }
+}
+
+function loadProgress() {
+    const savedProgress = localStorage.getItem("progress") || 0;
+    progress = parseInt(savedProgress);
+    document.getElementById("progressBar").value = progress;
+    document.getElementById("progressText").textContent = progress + "%";
+}
+
+/* 🌐 Multi-Language Support */
+const translations = {
+    en: {
+        title: "Student Tools Hub"
+    },
+    hi: {
+        title: "छात्र उपकरण केंद्र"
+    }
+};
+
+function changeLanguage(lang) {
+    document.querySelector("h1").textContent = translations[lang].title;
+}
+
+/* 📢 Share Website */
+function shareWebsite() {
+    if (navigator.share) {
+        navigator.share({
+            title: "Student Tools Hub",
+            text: "Check out this amazing website!",
+            url: window.location.href
+        });
+    } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Link copied to clipboard!");
+    }
+}
+
+/* Load Saved Data */
+window.addEventListener("load", () => {
+    loadProgress();
+});
