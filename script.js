@@ -238,9 +238,7 @@ function changeLanguage(lang) {
     document.querySelector("h1").textContent = translations[lang].title;
 }
 
-/* ======================
-   📅 STUDY SCHEDULE
-====================== */
+/* 📅 STUDY SCHEDULE */
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function renderTasks() {
@@ -274,27 +272,7 @@ function deleteTask(i) {
 
 renderTasks();
 
-
-/* ======================
-   📝 NOTES
-====================== */
-function saveNote() {
-  let note = document.getElementById("note").value;
-  localStorage.setItem("note", note);
-  showNote();
-}
-
-function showNote() {
-  document.getElementById("showNote").innerText =
-    localStorage.getItem("note") || "No notes yet";
-}
-
-showNote();
-
-
-/* ======================
-   ⏰ ALARM
-====================== */
+/* ⏰ ALARM */
 let alarmTime = null;
 
 function setAlarm() {
@@ -312,25 +290,7 @@ setInterval(() => {
   }
 }, 1000);
 
-
-/* ======================
-   📊 CGPA
-====================== */
-function calcCGPA() {
-  let g1 = Number(document.getElementById("g1").value);
-  let g2 = Number(document.getElementById("g2").value);
-  let g3 = Number(document.getElementById("g3").value);
-
-  let cgpa = (g1 + g2 + g3) / 3;
-
-  document.getElementById("cgpaResult").innerText =
-    "CGPA: " + cgpa.toFixed(2);
-}
-
-
-/* ======================
-   🎯 HABITS
-====================== */
+/* 🎯 HABITS */
 let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
 function renderHabits() {
