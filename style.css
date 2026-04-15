@@ -1,0 +1,45 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    padding: 60px 20px;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2.5em;
+}
+
+/* Button Styling */
+.btn {
+    background-color: #00c9a7;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: #00a389;
+}
+
+/* Section Styling */
+section {
+    padding: 40px 20px;
+}
+
+/* Footer Styling */
+footer {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    font-size: 14px;
+}
