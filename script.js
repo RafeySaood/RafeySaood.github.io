@@ -238,6 +238,112 @@ function changeLanguage(lang) {
     document.querySelector("h1").textContent = translations[lang].title;
 }
 
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function renderTasks() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  tasks.forEach((t, i) => {
+    list.innerHTML += `
+      <li>
+        ${t.time} - ${t.task}
+        <button onclick="deleteTask(${i})">❌</button>
+      </li>
+    `;
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function addTask() {
+  const task = document.getElementById("task").value;
+  const time = document.getElementById("time").value;
+
+  tasks.push({ task, time });
+  renderTasks();
+}
+
+function deleteTask(i) {
+  tasks.splice(i, 1);
+  renderTasks();
+}
+
+renderTasks();
+
+function saveNote() {
+  let note = document.getElementById("note").value;
+  localStorage.setItem("note", note);
+  showNote();
+}
+
+function showNote() {
+  document.getElementById("savedNote").innerText =
+    localStorage.getItem("note") || "No notes yet";
+}
+
+showNote();
+
+let alarm = null;
+
+function setAlarm() {
+  alarm = document.getElementById("alarmTime").value;
+  document.getElementById("status").innerText = "Alarm set for " + alarm;
+}
+
+setInterval(() => {
+  let now = new Date();
+  let current = now.toTimeString().slice(0,5);
+
+  if (alarm === current) {
+    alert("⏰ Time's up! Take a break!");
+    alarm = null;
+  }
+}, 1000);
+
+function calcCGPA() {
+  let g1 = Number(document.getElementById("g1").value);
+  let g2 = Number(document.getElementById("g2").value);
+  let g3 = Number(document.getElementById("g3").value);
+
+  let cgpa = (g1 + g2 + g3) / 3;
+
+  document.getElementById("result").innerText =
+    "Predicted CGPA: " + cgpa.toFixed(2);
+}
+
+let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+function renderHabits() {
+  const list = document.getElementById("habitList");
+  list.innerHTML = "";
+
+  habits.forEach((h, i) => {
+    list.innerHTML += `
+      <li>
+        <input type="checkbox"> ${h}
+        <button onclick="removeHabit(${i})">❌</button>
+      </li>
+    `;
+  });
+
+  localStorage.setItem("habits", JSON.stringify(habits));
+}
+
+function addHabit() {
+  let h = document.getElementById("habit").value;
+  habits.push(h);
+  renderHabits();
+}
+
+function removeHabit(i) {
+  habits.splice(i, 1);
+  renderHabits();
+}
+
+renderHabits();
+
+
 /* 📢 Share Website */
 function shareWebsite() {
     if (navigator.share) {
