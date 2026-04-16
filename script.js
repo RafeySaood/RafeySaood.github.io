@@ -240,15 +240,38 @@ function changeLanguage(lang) {
 
 /* 📢 Share Website */
 function shareWebsite() {
+    const shareData = {
+        title: "School Task Hub",
+        text: "Check out School Task Hub – a useful website for students!",
+        url: "https://rafeysaood.github.io/"
+    };
+
+    // Use Web Share API if supported
     if (navigator.share) {
-        navigator.share({
-            title: "Student Tools Hub",
-            text: "Check out this amazing website!",
-            url: window.location.href
-        });
+        navigator.share(shareData)
+            .then(() => console.log("Website shared successfully!"))
+            .catch((error) => console.log("Sharing failed:", error));
+    } 
+    // Fallback for desktops and unsupported browsers
+    else {
+        copyLinkFallback(shareData.url);
+    }
+}
+
+function copyLinkFallback(url) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url)
+            .then(() => alert("🔗 Link copied to clipboard!"))
+            .catch(() => prompt("Copy this link:", url));
     } else {
-        navigator.clipboard.writeText(window.location.href);
-        alert("Link copied to clipboard!");
+        // Older browser fallback
+        const tempInput = document.createElement("input");
+        tempInput.value = url;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("🔗 Link copied to clipboard!");
     }
 }
 
