@@ -230,7 +230,7 @@ const translations = {
         title: "Student Tools Hub"
     },
     hi: {
-        title: "छात्र उपकरण केंद्र"
+        title: "विद्यालय काम केंद्र"
     }
 };
 
