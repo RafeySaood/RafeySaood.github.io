@@ -238,41 +238,36 @@ function changeLanguage(lang) {
     document.querySelector("h1").textContent = translations[lang].title;
 }
 
-/* 📢 Share Website */
-function shareWebsite() {
-    const shareData = {
-        title: "School Task Hub",
-        text: "Check out School Task Hub – a useful website for students!",
-        url: "https://rafeysaood.github.io/"
-    };
+async function shareWebsite() {
+  const shareData = {
+    title: "School Task Hub",
+    text: "Check out School Task Hub - a useful website for students!",
+    url: "https://rafeysaood.github.io/"
+  };
 
-    // Use Web Share API if supported
-    if (navigator.share) {
-        navigator.share(shareData)
-            .then(() => console.log("Website shared successfully!"))
-            .catch((error) => console.log("Sharing failed:", error));
-    } 
-    // Fallback for desktops and unsupported browsers
-    else {
-        copyLinkFallback(shareData.url);
+  // 1. Try the Web Share API (Mobile/Modern Browsers)
+  if (navigator.share && navigator.canShare(shareData)) {
+    try {
+      await navigator.share(shareData);
+      console.log("Shared successfully");
+    } catch (err) {
+      // Ignore 'AbortError' which occurs if the user simply closes the share menu
+      if (err.name !== 'AbortError') {
+        console.error("Error sharing:", err);
+      }
     }
-}
-
-function copyLinkFallback(url) {
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url)
-            .then(() => alert("🔗 Link copied to clipboard!"))
-            .catch(() => prompt("Copy this link:", url));
-    } else {
-        // Older browser fallback
-        const tempInput = document.createElement("input");
-        tempInput.value = url;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand("copy");
-        document.body.removeChild(tempInput);
-        alert("🔗 Link copied to clipboard!");
+  } 
+  // 2. Fallback to Clipboard (Desktop/Unsupported Browsers)
+  else {
+    try {
+      await navigator.clipboard.writeText(shareData.url);
+      alert("Link copied to clipboard! Share it anywhere.");
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+      // Final fallback: show a prompt for the user to copy manually
+      window.prompt("Copy this link to share:", shareData.url);
     }
+  }
 }
 
 /* Load Saved Data */
